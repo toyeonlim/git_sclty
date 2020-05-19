@@ -1,3 +1,6 @@
+/*
+	SCLTY : 2020-05-19
+*/
 class Greeting{
 	//public, protected, default, private
 	public static void hi() {

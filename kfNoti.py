@@ -1,5 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
+import telepot
+token="1140975028:AAHF5R5pN632-d2iM4ZYH_1LUQmmhGsGqyQ"
+mc="1228410238"
+bot=telepot.Bot(token)
 
 #공지사항
 url1 = "http://new.kaf.or.kr/?c=5/33"
@@ -26,7 +30,7 @@ elem = soup.find("td",{"class": "sbj"})
 #print(elem)
 # 목표 텍스트 추출
 text = elem.get_text()
-print(text)
+bot.sendMessage(mc,text)
 
 resp = requests.get(url2)
 #print(resp)
@@ -47,4 +51,6 @@ elem = soup.find("td",{"class": "sbj"})
 #print(elem)
 # 목표 텍스트 추출
 text = elem.get_text()
-print(text)
+bot.sendMessage(mc,text)
+
+

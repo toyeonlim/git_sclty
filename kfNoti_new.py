@@ -36,7 +36,14 @@ elem1 = soup1.find("td",{"class": "sbj"})
 elem2 = soup2.find("td",{"class": "sbj"})
 elem3 = soup3.find("td",{"class": "sbj"})
 
-print(elem1)
+elem11 = soup1.find("a",{"class": "b"})
+elem21 = soup1.find("a",{"class": "b"})
+elem31 = soup1.find("a",{"class": "b"})
+
+text11 = elem11.get('href')
+text21 = elem21.get('href')
+text31 = elem31.get('href')
+
 # 목표 텍스트 추출
 text1 = elem1.get_text()
 text1 = text1.replace('\n','')
@@ -46,10 +53,11 @@ text1 = text1.replace('\t','')
 if 'new' in text1:
     # send message
     bot.sendMessage(mc,text1)
+    bot.sendMessage(mc,'http://new.kaf.or.kr/' + text11)
 else:
     print("None")
 
-print(elem2)
+#print(elem2)
 # 목표 텍스트 추출
 text2 = elem2.get_text()
 text2 = text2.replace('\n','')
@@ -59,10 +67,11 @@ text2 = text2.replace('\t','')
 if 'new' in text2:
     # send message
     bot.sendMessage(mc,text2)
+    bot.sendMessage(mc, 'http://new.kaf.or.kr/' + text21)
 else:
     print("None")
 
-print(elem3)
+# print(elem3)
 # 목표 텍스트 추출
 text3 = elem3.get_text()
 text3 = text3.replace('\n','')
@@ -72,5 +81,6 @@ text3 = text3.replace('\t','')
 if 'new' in text3:
     # send message
     bot.sendMessage(mc,text3)
+    bot.sendMessage(mc, 'http://new.kaf.or.kr/' + text31)
 else:
     print("None")

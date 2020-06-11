@@ -4,7 +4,7 @@ import telepot
 import sqlite3
 
 #도발선수 토큰
-token="1140975028:AAHF5R5pN632-d2iM4ZYH_1LUQmmhGsGqyQ"
+token="1224672949:AAGd26GAig_ouhtmqYASgZluqoDHyZEy348"
 mc="1228410238"
 bot=telepot.Bot(token)
 

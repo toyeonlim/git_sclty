@@ -16,26 +16,33 @@ url2 = "http://new.kaf.or.kr/?c=5/34"
 #경기결과
 url3 = "http://new.kaf.or.kr/?c=5/116"
 
+#서울시 산악연맹
+url4 = "http://old.kaf.or.kr/kafseoul/forum.php?mid=35"
+
 resp1 = requests.get(url1)
 resp2 = requests.get(url2)
 resp3 = requests.get(url3)
+resp4 = requests.get(url4)
 
 # 전송된 HTML 문서 얻기
 html1 = resp1.text
 html2 = resp2.text
 html3 = resp3.text
+html4 = resp4.text
 #print(html)
 
 # HTML 문서를 DOM으로 변환
 soup1 = BeautifulSoup(html1,"lxml")
 soup2 = BeautifulSoup(html2,"lxml")
 soup3 = BeautifulSoup(html3,"lxml")
+soup4 = BeautifulSoup(html4,"lxml")
 
 # 목표 HTML 요소 선택
 #print(soup)
 elem1 = soup1.find("td",{"class": "sbj"})
 elem2 = soup2.find("td",{"class": "sbj"})
 elem3 = soup3.find("td",{"class": "sbj"})
+elem4 = soup4.find("span",{"class": ""})
 
 elem11 = soup1.find("a",{"class": "b"})
 elem21 = soup1.find("a",{"class": "b"})
@@ -116,3 +123,26 @@ else:
 
     fw = open(os.path.join(BASE_DIR, 'compare3.txt'), 'w')
     fw.write(text3)
+
+#서울시 산악연맹
+text4 = elem4.get_text()
+text4 = text4.replace('\n','')
+text4 = text4.replace(' ','')
+text4 = text4.replace('\t','')
+text4 = text4.replace('\r','')
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+f = open(os.path.join(BASE_DIR, 'compare4.txt'), 'r')
+line4 = f.readline()
+print(line4)
+f.close()
+
+if line4 == text4:
+    print("None")
+else:
+    # send message
+    bot.sendMessage(mc,text4 + '서울시산악연맹')
+    bot.sendMessage(mc,'http://old.kaf.or.kr/kafseoul/forum.php?mid=35')
+
+    fw = open(os.path.join(BASE_DIR, 'compare4.txt'), 'w')
+    fw.write(text4)

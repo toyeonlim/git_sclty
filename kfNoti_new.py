@@ -1,7 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 import telepot
-import sqlite3
+import os
+
 
 #도발선수 토큰
 token="1224672949:AAGd26GAig_ouhtmqYASgZluqoDHyZEy348"
@@ -49,13 +50,23 @@ text1 = elem1.get_text()
 text1 = text1.replace('\n','')
 text1 = text1.replace(' ','')
 text1 = text1.replace('\t','')
+text1 = text1.replace('\r','')
 
-if 'new' in text1:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+f = open(os.path.join(BASE_DIR, 'compare1.txt'), 'r')
+line1 = f.readline()
+print(line1)
+f.close()
+
+if line1 == text1:
+    print("None")
+else:
     # send message
     bot.sendMessage(mc,text1)
     bot.sendMessage(mc,'http://new.kaf.or.kr/' + text11)
-else:
-    print("None")
+
+    fw = open(os.path.join(BASE_DIR, 'compare1.txt'), 'w')
+    fw.write(text1)
 
 #print(elem2)
 # 목표 텍스트 추출
@@ -63,13 +74,24 @@ text2 = elem2.get_text()
 text2 = text2.replace('\n','')
 text2 = text2.replace(' ','')
 text2 = text2.replace('\t','')
+text2 = text2.replace('\r','')
 
-if 'new' in text2:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+f = open(os.path.join(BASE_DIR, 'compare2.txt'), 'r')
+line2 = f.readline()
+print(line2)
+f.close()
+
+if line2 == text2:
+    print("None")
+else:
     # send message
     bot.sendMessage(mc,text2)
-    bot.sendMessage(mc, 'http://new.kaf.or.kr/' + text21)
-else:
-    print("None")
+    bot.sendMessage(mc,'http://new.kaf.or.kr/' + text21)
+
+    fw = open(os.path.join(BASE_DIR, 'compare2.txt'), 'w')
+    fw.write(text2)
+    print(text2)
 
 # print(elem3)
 # 목표 텍스트 추출
@@ -77,10 +99,20 @@ text3 = elem3.get_text()
 text3 = text3.replace('\n','')
 text3 = text3.replace(' ','')
 text3 = text3.replace('\t','')
+text3 = text3.replace('\r','')
 
-if 'new' in text3:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+f = open(os.path.join(BASE_DIR, 'compare3.txt'), 'r')
+line3 = f.readline()
+print(line3)
+f.close()
+
+if line3 == text3:
+    print("None")
+else:
     # send message
     bot.sendMessage(mc,text3)
-    bot.sendMessage(mc, 'http://new.kaf.or.kr/' + text31)
-else:
-    print("None")
+    bot.sendMessage(mc,'http://new.kaf.or.kr/' + text31)
+
+    fw = open(os.path.join(BASE_DIR, 'compare3.txt'), 'w')
+    fw.write(text3)
